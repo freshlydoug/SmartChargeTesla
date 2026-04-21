@@ -12,18 +12,19 @@ Designed for the EON Next **Drive Smart** tariff (formerly Next Drive v5.1), whi
 EON Next Kraken API
         │  polls every 60 s for planned dispatch windows
         ▼
-  SQLite database  ◄──────────────────────────────────────┐
-        │                                                  │
-        ▼                                                  │
-  dispatch_action_loop (every 60 s)                       │
-        │                                                  │
-        ├─ Dispatch window active?                         │
-        │   └─ YES: check myenergi Zappi                  │
-        │       ├─ Zappi charging? → Powerwall BACKUP 100% │
-        │       │   └─ Dispatch or Zappi ends → revert just before 30min slot ends  │
-        │       └─ Zappi idle    → no action (BACKUP not activated)   │
-        │                                                  │
-        └─ Google Calendar invite sent when charging confirmed
+  SQLite database  ◄─────────────────────────────────────────────────┐
+        │                                                             │
+        ▼                                                             │
+  dispatch_action_loop (every 60 s)                                  │
+        │                                                             │
+        ├─ Dispatch window active?                                    │
+        │   └─ YES: check myenergi Zappi                             │
+        │       ├─ Zappi charging? → Powerwall BACKUP 100%           │
+        │       │   └─ Dispatch or Zappi ends                        │
+        │       │       → revert just before 30min slot ends         │
+        │       └─ Zappi idle → no action (BACKUP not activated)     │
+        │                                                             │
+        └─ Google Calendar invite sent when charging confirmed ───────┘
 ```
 
 **Powerwall modes used:**

@@ -21,7 +21,7 @@ EON Next Kraken API
         │   └─ YES: check myenergi Zappi                  │
         │       ├─ Zappi charging? → Powerwall BACKUP 100% │
         │       │   └─ Dispatch or Zappi ends → revert just before 30min slot ends  │
-        │       └─ Zappi idle    → revert to TIME_BASED   │
+        │       └─ Zappi idle    → no action (BACKUP not activated)   │
         │                                                  │
         └─ Google Calendar invite sent when charging confirmed
 ```

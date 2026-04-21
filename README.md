@@ -1,6 +1,6 @@
 # SmartChargeTesla
 
-Automatically manages a **Tesla Powerwall** during **EON Next Kraken** EV dispatch windows, so you charge your electric vehicle on the cheapest possible rate without the Powerwall discharging at the same time.
+Automatically manages a **Tesla Powerwall** during **EON Next Kraken** EV dispatch windows, so you charge your electric vehicle on the cheapest possible rate and the Powerwall at the same time.
 
 Designed for the EON Next **Drive Smart** tariff (formerly Next Drive v5.1), which offers off-schedule cheap-rate windows dispatched via the Kraken SmartFlex platform. Works alongside a **myenergi Zappi** charger, which is used to confirm that the EV is actually drawing power before activating Powerwall protection.
 

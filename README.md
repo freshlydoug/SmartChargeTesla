@@ -232,22 +232,36 @@ SmartChargeTesla/
 
 ## Dependencies and credits
 
-| Library | Purpose | Licence |
-|---------|---------|---------|
-| [pymyenergi](https://github.com/cjne/pymyenergi) | myenergi hub API client | MIT |
-| [pypowerwall](https://github.com/jasonacox/pypowerwall) | Tesla Powerwall cloud/local API | MIT |
-| [requests](https://docs.python-requests.org/) | HTTP client for Kraken GraphQL | Apache 2.0 |
-| [PyYAML](https://pyyaml.org/) | Configuration file parsing | MIT |
-| [aiohttp](https://docs.aiohttp.org/) | Async HTTP (required by pymyenergi) | Apache 2.0 |
-| [httpx](https://www.python-httpx.org/) | Async HTTP (required by pymyenergi batch fetch) | BSD |
+| Library | Author | Purpose | Licence |
+|---------|--------|---------|---------|
+| [pypowerwall](https://github.com/jasonacox/pypowerwall) | Jason Cox | Tesla Powerwall cloud API — mode and reserve control | MIT |
+| [tesla_powerwall](https://github.com/jrester/tesla_powerwall) | jrester | Local gateway API; source of Powerwall operation mode values (`"autonomous"`, `"backup"`) used in this project | MIT |
+| [pymyenergi](https://github.com/cjne/pymyenergi) | cjne | myenergi hub API client — Zappi charging status | MIT |
+| [requests](https://docs.python-requests.org/) | Kenneth Reitz et al. | HTTP client for Kraken GraphQL calls | Apache 2.0 |
+| [PyYAML](https://pyyaml.org/) | Kirill Simonov | Configuration file parsing | MIT |
+| [aiohttp](https://docs.aiohttp.org/) | aio-libs | Async HTTP (required by pymyenergi) | Apache 2.0 |
+| [httpx](https://www.python-httpx.org/) | Encode | Async HTTP (required by pymyenergi batch fetch) | BSD |
+
+### Also useful
+
+[TeslaPy](https://github.com/tdorssers/TeslaPy) by Tim Dorssers is not a dependency of this project
+but is a convenient way to generate the Tesla OAuth refresh token needed by pypowerwall if you
+prefer not to use the interactive browser login:
+
+```bash
+pip install teslapy
+python3 -c "import teslapy; t = teslapy.Tesla('your@email.com'); t.fetch_token()"
+```
+
+### API notices
 
 The EON Next Kraken GraphQL API is an unofficial, undocumented interface
 to the same Kraken backend used by the EON Next mobile app. No affiliation
 with EON Next or Kraken Technologies is implied.
 
-The pypowerwall library uses Tesla's free owner API (not the paid Fleet API).
-No Tesla developer account is required. Tesla, Powerwall, and related marks
-are trademarks of Tesla, Inc.
+The pypowerwall and tesla_powerwall libraries use Tesla's free owner API
+(not the paid Fleet API). No Tesla developer account is required.
+Tesla, Powerwall, and related marks are trademarks of Tesla, Inc.
 
 myenergi and Zappi are trademarks of myenergi Ltd.
 

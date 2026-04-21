@@ -1,0 +1,55 @@
+# SmartChargeTesla configuration
+# Copy this file to config.yaml and fill in your credentials.
+# config.yaml is gitignored — never commit it.
+
+# ─── EON Next / Kraken ───────────────────────────────────────────────────────
+# Required. Used to fetch EV dispatch windows from the Kraken SmartFlex service.
+eon_next:
+  email: ""                      # EON Next account email address
+  password: ""                   # EON Next account password
+  import_account: "A-XXXXXXXX"   # Import electricity account number
+                                 # Found in the EON Next app or portal
+
+# ─── myenergi Zappi ──────────────────────────────────────────────────────────
+# Required for Zappi charging-status detection.
+# Credentials: myenergi app → Settings → myenergi hub → Advanced
+myenergi:
+  hub_serial: ""   # Hub serial number (starts with 10 or 11)
+  api_key: ""      # API key shown in myenergi app
+
+# ─── Tesla Powerwall ─────────────────────────────────────────────────────────
+# Required for Powerwall mode control.
+# Uses the free Tesla owner API (not Fleet API — no developer account needed).
+#
+# ONE-TIME SETUP: run this interactively before starting the service:
+#   python3 -c "
+#   import pypowerwall
+#   pypowerwall.Powerwall('', password='YOUR_PASSWORD', email='YOUR_EMAIL',
+#                         cloudmode=True, authpath='.')
+#   "
+# This opens a browser for Tesla login and caches the token in .pypowerwall.json.
+# After that, the service runs without interaction.
+tesla:
+  account_email: ""      # Your Tesla account email
+  account_password: ""   # Your Tesla account password
+  energy_site_id: ""     # Optional — pypowerwall auto-detects if omitted
+
+# ─── Google Calendar invites ─────────────────────────────────────────────────
+# Optional. Sends iCalendar invites via Gmail when EV charging is confirmed.
+# Requires a Gmail App Password (NOT your account password):
+#   Google Account → Security → 2-Step Verification → App passwords
+gcal:
+  smtp_user: ""          # Gmail address to send invites from
+  smtp_pass: ""          # 16-character Gmail app password
+  invite_to: ""          # Calendar to receive invites (can be same as smtp_user)
+  # Tariff rates shown in calendar event descriptions (optional)
+  cheap_rate_pence: 6.19         # p/kWh during dispatch window
+  standard_rate_pence: 26.073    # p/kWh standard import rate
+
+# ─── Database ────────────────────────────────────────────────────────────────
+database:
+  path: "data/smartcharge.db"    # SQLite database path (relative to project root)
+
+# ─── Control settings ────────────────────────────────────────────────────────
+control:
+  default_reserve_pct: 20        # Battery reserve % when reverting to TIME_BASED_CONTROL

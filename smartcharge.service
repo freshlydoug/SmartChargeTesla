@@ -1,0 +1,19 @@
+[Unit]
+Description=SmartChargeTesla — EON Next Kraken dispatch controller
+Documentation=https://github.com/YOUR_USERNAME/SmartChargeTesla
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+# Change WorkingDirectory to wherever you cloned the repo
+WorkingDirectory=/home/pi/SmartChargeTesla
+ExecStart=/usr/bin/python3 /home/pi/SmartChargeTesla/run.py
+Restart=on-failure
+RestartSec=30
+TimeoutStopSec=90
+# Log to systemd journal — view with: journalctl -u smartcharge -f
+
+[Install]
+WantedBy=multi-user.target

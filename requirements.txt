@@ -1,0 +1,17 @@
+# SmartChargeTesla dependencies
+
+# Tesla Powerwall control (cloud API via owner account — no Fleet API needed)
+pypowerwall>=0.10.0
+
+# myenergi Zappi charger status
+pymyenergi>=0.7.0
+
+# HTTP client (Kraken GraphQL API calls)
+requests>=2.31.0
+
+# Configuration file parsing
+pyyaml>=6.0
+
+# Async HTTP (used by pymyenergi)
+aiohttp>=3.9.0
+httpx>=0.25.0

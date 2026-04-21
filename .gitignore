@@ -1,0 +1,14 @@
+config.yaml
+data/
+.claude/
+.pypowerwall.auth
+.pypowerwall.site
+.pypowerwall.json
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.egg-info/
+dist/
+build/
+.pytest_cache/
